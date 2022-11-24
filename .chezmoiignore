@@ -1,0 +1,7 @@
+.gitignore
+.chezmoiversion
+.chezmoi.toml.tmpl
+.editorconfig
+.pre-commit-config.yaml
+.chezmoiexternal.toml
+README.md

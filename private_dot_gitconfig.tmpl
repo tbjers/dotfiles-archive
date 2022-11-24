@@ -1,0 +1,81 @@
+[user]
+    name = {{ .name | quote }}
+    email = {{ .email | quote }}
+    signingkey = {{ .gpgkey | quote }}
+    useConfigOnly = true
+
+[advice]
+    detachedHead = false
+
+[github]
+    user = {{ .chezmoi.username }}
+
+[init]
+    defaultBranch = main
+
+[core]
+    pager = diff-so-fancy | less --tabs=4 -RFX
+
+[fetch]
+    prune = true
+
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+
+[color "diff"]
+    meta = yellow
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+[delta]
+    syntax-theme = gruvbox-dark
+    line-numbers = true
+    side-by-side = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[commit]
+    gpgsign = true
+
+[tag]
+    forceSignAnnotated = true
+    gpgSign = true
+
+[credential]
+    helper = cache --timeout=3600
+
+[color]
+    ui = true
+
+[include]
+    path = {{ .chezmoi.homeDir }}/.gitinclude
+
+[help]
+    autocorrect = 20
+
+[diff "gpg"]
+    textconv = gpg --no-tty --decrypt
+
+[gpg]
+    program = gpg2
+
+[includeif "gitdir:~/git/{{ .chezmoi.username }}/"]
+    path = ~/git/{{ .chezmoi.username }}/.gitconfig
+
+[includeif "gitdir:~/git/NascentMaker/"]
+    path = ~/git/NascentMaker/.gitconfig
+
+[includeif "gitdir:~/git/PrepperArmy/"]
+    path = ~/git/PrepperArmy/.gitconfig
+
+[pull]
+    ff = only
+
+# -*-mode:ini-*- vim:ft=gitconfig:

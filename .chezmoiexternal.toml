@@ -1,0 +1,28 @@
+[".asdf"]
+    url = "https://github.com/asdf-vm/asdf.git"
+    type = "git-repo"
+    refreshPeriod = "168h"
+    [".asdf".clone]
+        args = ["--branch", "{{ .asdf_version }}", "--depth", "1"]
+    [".asdf".pull]
+        args = ["--ff-only"]
+
+[".local/bin/tsh"]
+    type = "file"
+    url = "https://cdn.teleport.dev/teleport-{{ .teleport_version }}-linux-{{ .chezmoi.arch }}-bin.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/tsh".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "teleport/tsh"]
+
+[".local/bin/starship"]
+    type = "file"
+    url = "https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-gnu.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/starship".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "starship"]
+
+# -*-mode:toml-*- vim:ft=toml:

@@ -1,0 +1,61 @@
+{{ if eq .osid "linux-ubuntu" -}}
+#!/bin/bash
+
+# exit on error
+set -Eeuo pipefail
+
+# Set secure permissions on created directories and files
+umask 077
+
+# Define version and architecture for op
+op_email="{{ .email }}"
+op_arch="{{ .chezmoi.arch }}"
+
+# Set up colors
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+reset=$(tput sgr0)
+
+verlte() {
+  printf '%s\n%s' "$1" "$2" | sort -C -V
+}
+
+verlt() {
+  ! verlte "$2" "$1"
+}
+
+echo "${green}Installing requirements${reset}"
+
+# Add the 1password repository
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
+sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22/
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+
+# Install dependencies
+sudo apt-get update \
+  && sudo apt -y --no-install-recommends install 1password 1password-cli curl \
+    gh git git-crypt gnupg2 jq lsb-release neovim \
+    pcsc-tools pcscd pinentry-curses python3 python3-neovim \
+    python3-pip ripgrep scdaemon tomb yubikey-manager
+
+echo "${green}Install pre-commit${reset}"
+
+# Install pre-commit
+pip install pre-commit --user
+
+echo "${green}Fetch and install GPG keys${reset}"
+
+# import and trust GPG key
+GPGKEY=F189ABC3C4117523
+GPGKEY_FINGERPRINT=E8A5374D7945C91F1AE5E98CF189ABC3C4117523
+gpg --keyserver keyserver.ubuntu.com --receive-keys ${GPGKEY}
+echo -e "5\ny\n" | gpg --command-fd 0 --expert --edit-key ${GPGKEY_FINGERPRINT} trust
+
+# power up yubikey
+gpg --card-status
+
+# -*-mode:shellscript-*- vim:ft=bash:
+{{- end }}
