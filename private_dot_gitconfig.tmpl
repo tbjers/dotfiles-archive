@@ -1,81 +1,83 @@
 [user]
-    name = {{ .name | quote }}
-    email = {{ .email | quote }}
-    signingkey = {{ .gpgkey | quote }}
-    useConfigOnly = true
+  name = {{ .name | quote }}
+  email = {{ .email | quote }}
+  signingkey = {{ .gpgkey | quote }}
+  useConfigOnly = true
 
 [advice]
-    detachedHead = false
+  detachedHead = false
+
+[alias]
+  patch = !git --no-pager diff --no-color
 
 [github]
-    user = {{ .chezmoi.username }}
+  user = {{ .chezmoi.username }}
 
 [init]
-    defaultBranch = main
+  defaultBranch = main
 
 [core]
-    pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = diff-so-fancy | less --tabs=4 -RFX
 
 [fetch]
-    prune = true
+  prune = true
 
 [color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 
 [color "diff"]
-    meta = yellow
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
-
-[delta]
-    syntax-theme = gruvbox-dark
-    line-numbers = true
-    side-by-side = true
+  meta = 11
+  frag = magenta bold
+  func = 146 bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
 
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = diff-so-fancy --patch
+
+[add "interactive"]
+  useBuiltin = false
 
 [commit]
-    gpgsign = true
+  gpgsign = true
 
 [tag]
-    forceSignAnnotated = true
-    gpgSign = true
+  forceSignAnnotated = true
+  gpgSign = true
 
 [credential]
-    helper = cache --timeout=3600
+  helper = cache --timeout=3600
 
 [color]
-    ui = true
+  ui = true
 
 [include]
-    path = {{ .chezmoi.homeDir }}/.gitinclude
+  path = {{ .chezmoi.homeDir }}/.gitinclude
 
 [help]
-    autocorrect = 20
+  autocorrect = 20
 
 [diff "gpg"]
-    textconv = gpg --no-tty --decrypt
+  textconv = gpg --no-tty --decrypt
 
 [gpg]
-    program = gpg2
+  program = gpg2
 
 [includeif "gitdir:~/git/{{ .chezmoi.username }}/"]
-    path = ~/git/{{ .chezmoi.username }}/.gitconfig
+  path = ~/git/{{ .chezmoi.username }}/.gitconfig
 
 [includeif "gitdir:~/git/NascentMaker/"]
-    path = ~/git/NascentMaker/.gitconfig
+  path = ~/git/NascentMaker/.gitconfig
 
 [includeif "gitdir:~/git/PrepperArmy/"]
-    path = ~/git/PrepperArmy/.gitconfig
+  path = ~/git/PrepperArmy/.gitconfig
 
 [pull]
-    ff = only
+  ff = only
 
 # -*-mode:ini-*- vim:ft=gitconfig:

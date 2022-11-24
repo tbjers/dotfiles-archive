@@ -26,13 +26,19 @@ verlt() {
 
 echo "${green}Installing requirements${reset}"
 
-# Add the 1password repository
-curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
-echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
-sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
-curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
-sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22/
-curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+if [ ! -f "/usr/share/keyrings/1password-archive-keyring.gpg" ]; then
+  # Add the 1password repository
+  curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+  echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
+fi
+if [ ! -d "/etc/debsig/policies/AC2D62742012EA22/" ]; then
+  sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+  curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+fi
+if [ ! -d "/usr/share/debsig/keyrings/AC2D62742012EA22/" ]; then
+  sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22/
+  curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+fi
 
 # Install dependencies
 sudo apt-get update \
@@ -42,10 +48,12 @@ sudo apt-get update \
     python3-pip ripgrep scdaemon tomb universal-ctags yubikey-manager \
     xdelta
 
-echo "${green}Install pre-commit${reset}"
-
-# Install pre-commit
-pip install pre-commit --user
+if ! command -v pre-commit &> /dev/null
+then
+  # Install pre-commit
+  echo "${green}Install pre-commit${reset}"
+  pip install pre-commit --user
+fi
 
 echo "${green}Fetch and install GPG keys${reset}"
 
