@@ -43,10 +43,9 @@ fi
 # Install dependencies
 sudo apt-get update \
   && sudo apt -y --no-install-recommends install 1password 1password-cli curl \
-    gh git git-crypt gnupg2 jq lsb-release neovim \
-    pcsc-tools pcscd pinentry-curses python3 python3-neovim \
-    python3-pip ripgrep scdaemon tomb universal-ctags yubikey-manager \
-    xdelta
+    gh git git-crypt gnupg2 jq lsb-release neovim pass pcsc-tools pcscd \
+    pinentry-curses python3 python3-neovim python3-pip ripgrep scdaemon tomb \
+    universal-ctags yubikey-manager
 
 if ! command -v pre-commit &> /dev/null
 then
