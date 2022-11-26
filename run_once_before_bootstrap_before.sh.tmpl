@@ -42,10 +42,11 @@ fi
 
 # Install dependencies
 sudo apt-get update \
-  && sudo apt -y --no-install-recommends install 1password 1password-cli curl \
-    gh git git-crypt gnupg2 jq lsb-release neovim pass pcsc-tools pcscd \
-    pinentry-curses python3 python3-neovim python3-pip ripgrep scdaemon tomb \
-    universal-ctags yubikey-manager
+  && sudo apt -y --no-install-recommends install 1password 1password-cli \
+    bison ccache cmake curl dfu-util flex gh git git-crypt gnupg2 gperf jq \
+    libffi-dev libssl-dev libusb-1.0-0 lsb-release neovim ninja-build pass \
+    pcsc-tools pcscd pinentry-curses python3 python3-neovim python3-pip \
+    python3-venv ripgrep scdaemon tomb universal-ctags wget yubikey-manager
 
 if ! command -v pre-commit &> /dev/null
 then
