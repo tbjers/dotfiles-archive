@@ -1,0 +1,58 @@
+[$Version]
+update_info=kwinrules.upd:replace-placement-string-to-enum,kwinrules.upd:use-virtual-desktop-ids
+
+[1]
+Description=Settings for toolkit firefox
+above=true
+aboverule=2
+desktops=\\0
+desktopsrule=2
+opacityactive=100
+opacityactiverule=2
+opacityinactive=100
+opacityinactiverule=2
+skipswitcher=true
+skipswitcherrule=2
+skiptaskbar=true
+skiptaskbarrule=2
+windowrole=pictureinpicture
+windowrolematch=1
+wmclass=toolkit firefox
+wmclasscomplete=true
+wmclassmatch=1
+
+[69883039-e1cd-414f-96a4-170c61427460]
+Description=Settings for toolkit firefox
+above=true
+aboverule=2
+desktops=\\0
+desktopsrule=2
+opacityactive=100
+opacityactiverule=2
+opacityinactive=100
+opacityinactiverule=2
+skipswitcher=true
+skipswitcherrule=2
+skiptaskbar=true
+skiptaskbarrule=2
+windowrole=PictureInPicture
+windowrolematch=1
+wmclass=toolkit firefox
+wmclasscomplete=true
+wmclassmatch=1
+
+[General]
+count=1
+rules=1
+
+[dd282f78-4f5f-4fb5-b7a1-c117b171139c]
+Description=Google Messages
+noborder=true
+noborderrule=2
+title=Messages
+titlematch=2
+type=1
+typerule=2
+wmclass=crx_hpfldicfbfomlpcikngkocigghgafkph google-chrome
+wmclasscomplete=true
+wmclassmatch=1
