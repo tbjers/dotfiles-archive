@@ -43,7 +43,7 @@ wobblywindowsEnabled=true
 PopupHideDelay=800
 
 [TabBox]
-LayoutName=coverswitch
+LayoutName=compact
 
 [Windows]
 RollOverDesktops=false
