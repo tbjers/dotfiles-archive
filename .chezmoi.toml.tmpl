@@ -1,7 +1,7 @@
 # {{- $email := promptStringOnce . "email" "Enter the email you use with GitHub" -}}
 # {{- $name := promptStringOnce . "name" "Enter your name" -}}
 # {{- $gpgkey := promptStringOnce . "gpgkey" "Enter your GPG key ID" -}}
-# 
+#
 # {{- $osid := .chezmoi.os -}}
 # {{- if hasKey .chezmoi.osRelease "id" -}}
 # {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
