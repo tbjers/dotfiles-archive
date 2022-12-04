@@ -30,9 +30,10 @@ LayoutMode=1
 SlideBackground=false
 
 [NightColor]
+Active=true
 LatitudeAuto=35.2369
 LongitudeAuto=-80.8957
-NightTemperature=2800
+NightTemperature=3300
 
 [Plugins]
 blurEnabled=true

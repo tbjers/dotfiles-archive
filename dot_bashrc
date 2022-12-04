@@ -116,6 +116,11 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# Add doom to path
+if [ -d "${HOME}/.emacs.d/bin" ]; then
+  PATH="${HOME}/.emacs.d/bin:${PATH}"
+fi
+
 export PATH="${HOME}/.local/bin:${PATH}"
 
 # Include asdf and asdf completions
