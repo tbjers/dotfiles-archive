@@ -45,7 +45,6 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/sync/Documents/org/")
 
-
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
@@ -77,3 +76,10 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(after! ranger
+  (setq ranger-hide-cursor t)
+  (setq ranger-cleanup-on-disable t)
+  (setq ranger-dont-show-binary t)
+  (setq ranger-preview-file t)
+  (setq ranger-override-dired 'ranger))

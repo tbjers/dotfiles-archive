@@ -38,7 +38,7 @@
   whitespace = red reverse
 
 [interactive]
-  diffFilter = diff-so-fancy --patch
+  diffFilter = TERM=xterm diff-so-fancy --patch
 
 [add "interactive"]
   useBuiltin = false
@@ -68,6 +68,12 @@
 [gpg]
   program = gpg2
 
+[pull]
+  ff = only
+
+[push]
+  autoSetupRemote = true
+
 [includeif "gitdir:~/git/{{ .chezmoi.username }}/"]
   path = ~/git/{{ .chezmoi.username }}/.gitconfig
 
@@ -76,8 +82,5 @@
 
 [includeif "gitdir:~/git/PrepperArmy/"]
   path = ~/git/PrepperArmy/.gitconfig
-
-[pull]
-  ff = only
 
 # -*-mode:ini-*- vim:ft=gitconfig:

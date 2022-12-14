@@ -29,6 +29,9 @@ LayoutMode=1
 [Effect-slide]
 SlideBackground=false
 
+[ModifierOnlyShortcuts]
+Meta=org.kde.kglobalaccel,/component/khotkeys,org.kde.kglobalaccel.Component,invokeShortcut,{04a84a91-7d93-4686-85ee-3496e0e704fd}
+
 [NightColor]
 Active=true
 LatitudeAuto=35.2369
@@ -44,7 +47,7 @@ wobblywindowsEnabled=true
 PopupHideDelay=800
 
 [TabBox]
-LayoutName=compact
+LayoutName=thumbnail_grid
 
 [Windows]
 RollOverDesktops=false
