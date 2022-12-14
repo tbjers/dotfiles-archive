@@ -1,3 +1,6 @@
+# -*-mode: toml;-*- vim:ft=toml
+# file: chezmoi/.chezmoi.toml.tmpl
+
 # {{- $email := promptStringOnce . "email" "Enter the email you use with GitHub" -}}
 # {{- $name := promptStringOnce . "name" "Enter your name" -}}
 # {{- $gpgkey := promptStringOnce . "gpgkey" "Enter your GPG key ID" -}}
@@ -16,8 +19,9 @@ color = "on"
     name = {{ $name | quote }}
     gpgkey = {{ $gpgkey | quote }}
     asdf_version = "v0.10.2"
-    teleport_version = "v11.0.3"
-    op_version = "v2.7.3"
+    teleport_version = "v11.1.2"
+    op_version = "v2.10.0"
+    helm_version = "v3.10.3"
     osid = {{ $osid | quote }}
 
 [gpg]
@@ -39,5 +43,3 @@ color = "on"
 
 [status]
     exclude = ["scripts"]
-
-# -*-mode:toml-*- vim:ft=toml

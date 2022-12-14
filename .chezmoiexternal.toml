@@ -1,3 +1,8 @@
+# -*-mode: toml;-*- vim:ft=toml
+# file: chezmoi/.chezmoiexternal.toml
+
+# -*-mode:toml-*- vim:ft=toml:
+
 [".asdf"]
     url = "https://github.com/asdf-vm/asdf.git"
     type = "git-repo"
@@ -25,4 +30,11 @@
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "starship"]
 
-# -*-mode:toml-*- vim:ft=toml:
+[".local/bin/helm"]
+    type = "file"
+    url = "https://get.helm.sh/helm-{{ .helm_version }}-linux-{{ .chezmoi.arch }}.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/helm".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "linux-{{ .chezmoi.arch }}/helm"]

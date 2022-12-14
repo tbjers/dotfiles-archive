@@ -1,3 +1,6 @@
+# -*-mode: gitconfig;-*- vim:ft=gitconfig:
+# file: chezmoi/private_dot_gitconfig.tmpl
+
 [user]
   name = {{ .name | quote }}
   email = {{ .email | quote }}
@@ -82,5 +85,3 @@
 
 [includeif "gitdir:~/git/PrepperArmy/"]
   path = ~/git/PrepperArmy/.gitconfig
-
-# -*-mode:ini-*- vim:ft=gitconfig:
