@@ -1,8 +1,6 @@
 # -*-mode: toml;-*- vim:ft=toml
 # file: chezmoi/.chezmoiexternal.toml
 
-# -*-mode:toml-*- vim:ft=toml:
-
 [".asdf"]
     url = "https://github.com/asdf-vm/asdf.git"
     type = "git-repo"
@@ -20,6 +18,15 @@
     [".local/bin/tsh".filter]
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "teleport/tsh"]
+
+[".local/bin/tctl"]
+    type = "file"
+    url = "https://cdn.teleport.dev/teleport-{{ .teleport_version }}-linux-{{ .chezmoi.arch }}-bin.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/tctl".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "teleport/tctl"]
 
 [".local/bin/starship"]
     type = "file"
