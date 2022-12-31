@@ -12,7 +12,7 @@
 
 [".local/bin/tsh"]
     type = "file"
-    url = "https://cdn.teleport.dev/teleport-{{ .teleport_version }}-linux-{{ .chezmoi.arch }}-bin.tar.gz"
+    url = "https://cdn.teleport.dev/teleport-{{ .teleport_version }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}-bin.tar.gz"
     executable = true
     refreshPeriod = "168h"
     [".local/bin/tsh".filter]
@@ -21,7 +21,7 @@
 
 [".local/bin/tctl"]
     type = "file"
-    url = "https://cdn.teleport.dev/teleport-{{ .teleport_version }}-linux-{{ .chezmoi.arch }}-bin.tar.gz"
+    url = "https://cdn.teleport.dev/teleport-{{ .teleport_version }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}-bin.tar.gz"
     executable = true
     refreshPeriod = "168h"
     [".local/bin/tctl".filter]
@@ -30,7 +30,7 @@
 
 [".local/bin/starship"]
     type = "file"
-    url = "https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-gnu.tar.gz"
+    url = "https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-{{ .chezmoi.os }}-gnu.tar.gz"
     executable = true
     refreshPeriod = "168h"
     [".local/bin/starship".filter]
@@ -39,9 +39,26 @@
 
 [".local/bin/helm"]
     type = "file"
-    url = "https://get.helm.sh/helm-{{ .helm_version }}-linux-{{ .chezmoi.arch }}.tar.gz"
+    url = "https://get.helm.sh/helm-{{ .helm_version }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
     executable = true
     refreshPeriod = "168h"
     [".local/bin/helm".filter]
         command = "tar"
-        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "linux-{{ .chezmoi.arch }}/helm"]
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "{{ .chezmoi.os }}-{{ .chezmoi.arch }}/helm"]
+
+[".local/bin/shellcheck"]
+    type = "file"
+    url = "https://github.com/koalaman/shellcheck/releases/download/{{ .shellcheck_version }}/shellcheck-{{ .shellcheck_version }}.{{ .chezmoi.os }}.{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}.tar.xz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/shellcheck".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "-J", "--to-stdout", "shellcheck-{{ .shellcheck_version }}/shellcheck"]
+
+[".local/bin/shfmt"]
+    type = "file"
+    url = "https://github.com/mvdan/sh/releases/download/{{ .shfmt_version }}/shfmt_{{ .shfmt_version }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/shfmt".checksum]
+        sha256 = "5741a02a641de7e56b8da170e71a97e58050d66a3cf485fb268d6a5a8bb74afb"

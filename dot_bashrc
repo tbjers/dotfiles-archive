@@ -41,7 +41,7 @@ case "$TERM" in
   xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
+# uncomment for a color prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
@@ -85,7 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
   alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
+# color GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
@@ -122,10 +122,31 @@ else
   echo "Error loading git completions"
 fi
 
+mkcd() {
+  _NEW_DIR="$1"
+
+  if [ -d ${_NEW_DIR} ]; then
+    cd ${_NEW_DIR}
+    return
+  fi
+
+  mkdir -p ${_NEW_DIR} && cd ${_NEW_DIR}
+}
+
 # Include asdf and asdf completions
 if [ -d "${HOME}/.asdf" ]; then
   . $HOME/.asdf/asdf.sh
   . $HOME/.asdf/completions/asdf.bash
+fi
+
+# Add kubectl completions
+if [ -x /usr/bin/kubectl ]; then
+  eval "$(kubectl completion bash)"
+fi
+
+# Add Helm completions
+if [ -x $HOME/.local/bin/helm ]; then
+  eval "$(helm completion bash)"
 fi
 
 # Add doom to path

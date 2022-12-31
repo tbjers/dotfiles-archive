@@ -4,17 +4,31 @@ ci:
     - ggshield
 
 repos:
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: '3.0.0'
+    hooks:
+      - id: markdownlint
+      - id: git-dirty
+      - id: git-check
+
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 3.0.0
+    hooks:
+      - id: markdownlint
+
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.6.0-1
+    hooks:
+      - id: shfmt
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.2
+    hooks:
+      - id: shellcheck
+
   - repo: https://github.com/gitguardian/ggshield
-    rev: 'v1.14.2'
+    rev: v1.14.2
     hooks:
       - id: ggshield
         language_version: python3
         stages: [commit]
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: '3.0.0'
-    hooks:
-      - id: shellcheck
-      - id: shfmt
-      - id: markdownlint
-      - id: git-dirty
-      - id: git-check

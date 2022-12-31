@@ -83,3 +83,6 @@
   (setq ranger-dont-show-binary t)
   (setq ranger-preview-file t)
   (setq ranger-override-dired 'ranger))
+
+(add-hook 'window-setup-hook #'toggle-frame-maximized)
+(setq auto-save-default nil)
