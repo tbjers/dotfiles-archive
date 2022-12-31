@@ -1,11 +1,25 @@
+---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
 ci:
   autofix_prs: true
   skip:
     - ggshield
 
 repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: '3.0.0'
+    rev: 3.0.0
     hooks:
       - id: markdownlint
       - id: git-dirty
