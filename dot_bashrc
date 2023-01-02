@@ -149,6 +149,11 @@ if [ -x $HOME/.local/bin/helm ]; then
   eval "$(helm completion bash)"
 fi
 
+# Add Influx CLI completions
+if [ -x $HOME/.local/bin/influx ]; then
+  eval "$(influx completion bash)"
+fi
+
 # Add doom to path
 if [ -d "${HOME}/.emacs.d/bin" ]; then
   PATH="${HOME}/.emacs.d/bin:${PATH}"

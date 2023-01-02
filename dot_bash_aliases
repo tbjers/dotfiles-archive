@@ -3,3 +3,4 @@ alias cz=chezmoi
 alias czg="chezmoi git"
 alias ssh="kitty +kitten ssh"
 alias nah="git reset --hard; git clean -df;"
+alias gp="git push"

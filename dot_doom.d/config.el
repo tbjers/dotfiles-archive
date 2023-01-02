@@ -86,3 +86,6 @@
 
 (add-hook 'window-setup-hook #'toggle-frame-maximized)
 (setq auto-save-default nil)
+
+(after! org
+  (setq org-default-notes-file "inbox.org"))
