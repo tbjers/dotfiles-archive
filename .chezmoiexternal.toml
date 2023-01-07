@@ -71,3 +71,12 @@
     [".local/bin/influx".filter]
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "influxdb2-client-{{ .influx_version }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}/influx"]
+
+[".local/bin/getignore"]
+    type = "file"
+    url = "https://github.com/gotgenes/getignore/releases/download/v{{ .getignore_version }}/getignore-{{ .getignore_version }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/getignore".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "getignore-{{ .getignore_version }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}/getignore"]

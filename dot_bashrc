@@ -133,25 +133,16 @@ mkcd() {
   mkdir -p ${_NEW_DIR} && cd ${_NEW_DIR}
 }
 
-# Include asdf and asdf completions
+# Include asdf
 if [ -d "${HOME}/.asdf" ]; then
   . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
 fi
 
-# Add kubectl completions
-if [ -x /usr/bin/kubectl ]; then
-  eval "$(kubectl completion bash)"
-fi
-
-# Add Helm completions
-if [ -x $HOME/.local/bin/helm ]; then
-  eval "$(helm completion bash)"
-fi
-
-# Add Influx CLI completions
-if [ -x $HOME/.local/bin/influx ]; then
-  eval "$(influx completion bash)"
+# Include completion files
+if [ -d "${HOME}/.completions.d" ]; then
+  for incl in ${HOME}/.completions.d/*;
+    do source ${incl}
+  done
 fi
 
 # Add doom to path

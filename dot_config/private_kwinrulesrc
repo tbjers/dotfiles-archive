@@ -21,6 +21,20 @@ wmclass=toolkit firefox
 wmclasscomplete=true
 wmclassmatch=1
 
+[2]
+Description=Albert
+above=true
+aboverule=3
+skippager=true
+skippagerrule=3
+skipswitcher=true
+skipswitcherrule=3
+skiptaskbar=true
+skiptaskbarrule=3
+wmclass=albert albert
+wmclasscomplete=true
+wmclassmatch=1
+
 [69883039-e1cd-414f-96a4-170c61427460]
 Description=Settings for toolkit firefox
 above=true
@@ -41,9 +55,35 @@ wmclass=toolkit firefox
 wmclasscomplete=true
 wmclassmatch=1
 
+[9f27e61c-5e49-45b3-b9d7-2f02772cbb34]
+Description=Albert
+above=true
+aboverule=3
+skippager=true
+skippagerrule=3
+skipswitcher=true
+skipswitcherrule=3
+skiptaskbar=true
+skiptaskbarrule=3
+wmclass=albert albert
+wmclasscomplete=true
+wmclassmatch=1
+
 [General]
-count=1
-rules=1
+count=2
+rules=1,2
+
+[d3818a72-4000-4f63-bbec-ce5e9e43a48a]
+Description=Albert
+above=true
+aboverule=2
+skipswitcher=true
+skipswitcherrule=2
+skiptaskbar=true
+skiptaskbarrule=2
+wmclass=albert
+wmclasscomplete=true
+wmclassmatch=2
 
 [dd282f78-4f5f-4fb5-b7a1-c117b171139c]
 Description=Google Messages
