@@ -150,7 +150,13 @@ if [ -d "${HOME}/.emacs.d/bin" ]; then
   PATH="${HOME}/.emacs.d/bin:${PATH}"
 fi
 
+# Add .local/bin to PATH
 export PATH="${HOME}/.local/bin:${PATH}"
+
+# Activate 1Password CLI plugins
+if [ -f "${HOME}/.config/op/plugins.sh" ]; then
+  . $HOME/.config/op/plugins.sh
+fi
 
 # Launch starship
 eval "$(starship init bash)"

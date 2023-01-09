@@ -80,3 +80,14 @@
     [".local/bin/getignore".filter]
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "getignore-{{ .getignore_version }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}/getignore"]
+
+[".local/bin/fossa"]
+    type = "file"
+    url = "https://github.com/fossas/fossa-cli/releases/download/v3.6.10/fossa_3.6.10_linux_amd64.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/fossa".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "fossa"]
+    [".local/bin/fossa".checksum]
+        sha256 = "2b6a0d739af709c3fa73232e909288ee8dd4d30cd0f9c9c4e65082bc1c7b8d45"
