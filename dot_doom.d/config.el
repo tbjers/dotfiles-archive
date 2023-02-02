@@ -89,3 +89,6 @@
 
 (after! org
   (setq org-default-notes-file "inbox.org"))
+
+(after! flycheck
+  (add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))

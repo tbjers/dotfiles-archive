@@ -91,3 +91,11 @@
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "fossa"]
     [".local/bin/fossa".checksum]
         sha256 = "2b6a0d739af709c3fa73232e909288ee8dd4d30cd0f9c9c4e65082bc1c7b8d45"
+
+[".local/bin/diff-so-fancy"]
+    type = "file"
+    url = "https://github.com/so-fancy/diff-so-fancy/releases/download/v1.4.3/diff-so-fancy"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/diff-so-fancy".checksum]
+        sha256 = "de90659705436cf17d9a8aaad7012c9ed82d7f16eadf1ecee3d6badb0717b73f"
