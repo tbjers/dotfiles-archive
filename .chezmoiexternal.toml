@@ -99,3 +99,10 @@
     refreshPeriod = "168h"
     [".local/bin/diff-so-fancy".checksum]
         sha256 = "de90659705436cf17d9a8aaad7012c9ed82d7f16eadf1ecee3d6badb0717b73f"
+
+["Apps/manuskript"]
+    type = "git-repo"
+    url = "https://github.com/olivierkes/manuskript.git"
+    refreshPeriod = "168h"
+    ["Apps/manuskript".pull]
+        args = ["--ff-only"]
