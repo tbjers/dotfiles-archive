@@ -106,3 +106,11 @@
     refreshPeriod = "168h"
     ["Apps/manuskript".pull]
         args = ["--ff-only"]
+
+[".local/bin/Logic.AppImage"]
+    type = "file"
+    executable = true
+    url = "https://downloads.saleae.com/logic2/Logic-2.4.6-master.AppImage"
+    refreshPeriod = "168h"
+    [".local/bin/Logic.AppImage".checksum]
+        sha256 = "1582e3838973afc336dabe32a0a7cc200c761ca1a2d9f703dbc01a5750a190b9"

@@ -4,5 +4,6 @@
 .editorconfig
 .pre-commit-config.yaml
 .chezmoiexternal.toml
+udev
 README.md
 LICENSE
