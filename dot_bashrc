@@ -150,15 +150,15 @@ if [ -d "${HOME}/.emacs.d/bin" ]; then
   PATH="${HOME}/.emacs.d/bin:${PATH}"
 fi
 
-# Add .local/bin to PATH
-export PATH="${HOME}/.local/bin:${PATH}"
-
 # Add application paths to PATH
 if [ -d "${HOME}/Apps" ]; then
   for d in ${HOME}/Apps/*/bin;
     do PATH="${PATH}:${d}"
   done
 fi
+
+# Add .local/bin to PATH
+export PATH="${HOME}/.local/bin:${PATH}"
 
 # Activate 1Password CLI plugins
 if [ -f "${HOME}/.config/op/plugins.sh" ]; then

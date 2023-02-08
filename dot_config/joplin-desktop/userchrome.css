@@ -1,0 +1,18 @@
+/* For styling the entire Joplin app (except the rendered Markdown, which is defined in `userstyle.css`) */
+body, button {
+    font-size: 15px !important;
+}
+
+.isoHfB,
+.klAZRT,
+.kxLvUC {
+  font-size: 15px !important;
+}
+
+.iUjLrz, .hWrxxh {
+  font-size: 13px !important;
+}
+
+.iUjLrz>a, .hWrxxh>a {
+  font-size: 13px !important;
+}
