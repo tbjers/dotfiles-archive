@@ -157,6 +157,13 @@ if [ -d "${HOME}/Apps" ]; then
   done
 fi
 
+# Add tools paths to PATH
+if [ -d "${HOME}/Tools" ]; then
+  for d in ${HOME}/Tools/*/bin;
+    do PATH="${PATH}:${d}"
+  done
+fi
+
 # Add .local/bin to PATH
 export PATH="${HOME}/.local/bin:${PATH}"
 

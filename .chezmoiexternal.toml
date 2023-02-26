@@ -114,3 +114,20 @@
     refreshPeriod = "168h"
     [".local/bin/Logic.AppImage".checksum]
         sha256 = "1582e3838973afc336dabe32a0a7cc200c761ca1a2d9f703dbc01a5750a190b9"
+
+["Tools/Android/bin"]
+    type = "archive"
+    url = "https://dl.google.com/android/repository/platform-tools-latest-linux.zip"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+    include = ["platform-tools/**"]
+
+[".local/bin/minisign"]
+    type = "file"
+    url = "https://github.com/jedisct1/minisign/releases/download/{{ .minisign_version }}/minisign-{{ .minisign_version }}-{{ .chezmoi.os }}.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/minisign".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "minisign-linux/{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}/minisign"]
