@@ -115,6 +115,14 @@
     [".local/bin/Logic.AppImage".checksum]
         sha256 = "1582e3838973afc336dabe32a0a7cc200c761ca1a2d9f703dbc01a5750a190b9"
 
+[".local/bin/ArduinoIDE.AppImage"]
+    type = "file"
+    executable = true
+    url = "https://github.com/arduino/arduino-ide/releases/download/2.0.4/arduino-ide_2.0.4_Linux_64bit.AppImage"
+    refreshPeriod = "168h"
+    [".local/bin/ArduinoIDE.AppImage".checksum]
+        sha256 = "ba70b20f170e1ab38691a80a585b8cf2ddf64417edc2e9ea56e65c82dfe83adf"
+
 ["Tools/Android/bin"]
     type = "archive"
     url = "https://dl.google.com/android/repository/platform-tools-latest-linux.zip"
